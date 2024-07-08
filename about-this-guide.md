@@ -1,6 +1,10 @@
 # About this Guide
 
-After years of scripting and reviewing others' scripts, I have developed a style and set of standards. Recently, I discovered that many of my conventions are formally named and documented. This guide, inspired by the [PowerShell Practice and Style guide](https://poshcode.gitbook.io/powershell-practice-and-style), summarizes points from that resource, adds additional insights, and provides a customized standard for my peers and AI to reference when scripting. The authors of the original guide encourage widespread redistribution of their content, so approximately 90% of this guide is derived from their work.
+After years of scripting and reviewing others' scripts, I have developed a unique style and set of standards. Recently, I realized that many of my conventions align with formally named and documented practices. This guide, inspired by the [PowerShell Practice and Style guide](https://poshcode.gitbook.io/powershell-practice-and-style), summarizes key points from that resource, adds my insights, and provides a customized standard for my peers and AI to reference when scripting. Initially, I considered contributing to their repository, but given the extent of my changes and the fact that the original was last updated over a year ago, I decided to create my own version. The authors of the original guide encourage widespread redistribution of their content, so approximately 90% of this guide is derived from their work.
+
+\- Ryan Whitlock
+
+If you find an issue, please submit it [here](https://github.com/PSScriptSquad/PowerShell-Scripting-Style-Best-Practices-Guide).
 
 #### Credits <a href="#credits" id="credits"></a>
 
