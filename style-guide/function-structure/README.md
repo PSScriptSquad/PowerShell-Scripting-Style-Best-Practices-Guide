@@ -48,12 +48,10 @@ function Get-User {
     [OutputType([String], ParameterSetName = "Name")]
     param (
         [parameter(Mandatory = $true, ParameterSetName = "ID")]
-        [Int[]]
-        $UserID,
+        [Int[]]$UserID,
         
         [parameter(Mandatory = $true, ParameterSetName = "Name")]
-        [String[]]
-        $UserName
+        [String[]]$UserName
     )
 <# function body #>
 }
@@ -71,8 +69,7 @@ The AllowNull attribute allows the value of a mandatory parameter to be null (`$
 param (
 [Parameter(Mandatory = $true)]
 [AllowNull()]
-[String]
-$ComputerName
+[String]$ComputerName
 )
 ```
 
@@ -84,8 +81,7 @@ The AllowEmptyString attribute allows the value of a mandatory parameter to be a
 param (
 [Parameter(Mandatory = $true)]
 [AllowEmptyString()]
-[String]
-$ComputerName
+[String]$ComputerName
 )
 ```
 
