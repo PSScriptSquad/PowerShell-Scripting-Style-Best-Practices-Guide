@@ -209,10 +209,39 @@ $yesterdaysDate = (Get-Date).AddDays(-$i)
 &#x20;Use a single space after commas and semicolons, and inside curly braces. Avoid unnecessary spaces inside parentheses or square braces.
 
 ```powershell
-$Var = 1
-"This is a string with one ( ${Var} ) delimited variable."
-"There are $( (Get-ChildItem).Count ) files."
+# This script gets a list of services and filters them based on their status
+
+# Define a function to get services by status
+function Get-ServicesByStatus {
+    param (
+        [string]$Status
+    )
+
+    # Get all services and filter by the provided status
+    $services = Get-Service | Where-Object { $_.Status -eq $Status }
+
+    # Return the filtered services
+    return $services
+}
+
+# Call the function to get running services
+$runningServices = Get-ServicesByStatus -Status 'Running'
+
+# Display the running services
+$runningServices | ForEach-Object { Write-Output "Service: $($_.Name), Status: $($_.Status)" }
 ```
+
+#### Explanation:
+
+1. **Whitespace around commas and semicolons**:
+   * `param ( [string]$Status )` has spaces after the comma.
+   * `Write-Output "Service: $($_.Name), Status: $($_.Status)"` has spaces after the comma.
+2. **Spaces inside curly braces**:
+   * In script blocks, such as `Where-Object { $_.Status -eq $Status }` and `ForEach-Object { Write-Output "Service: $($_.Name), Status: $($_.Status)" }`, there's a single space inside the curly braces.
+3. **Subexpressions**:
+   * Subexpression `$( ... )` in `Write-Output "Service: $($_.Name), Status: $($_.Status)"` has a single space inside the parentheses.
+4. **Avoid unnecessary spaces inside parentheses or square braces**:
+   * The parentheses and square braces are used without unnecessary spaces, for example, `param ( [string]$Status )` and `Where-Object { $_.Status -eq $Status }`.
 
 ## Avoid Using Semicolons (;) as Line Terminators
 
