@@ -68,4 +68,4 @@ Push-Location $PSScriptRoot
 
 ### Avoid Using `~` to Represent the Home Folder
 
-The meaning of `~` depends on the current provider at the time of execution. This isn't just a style issue—it's crucial for code you intend to share. Instead, use `${Env:UserProfile}` or `(Get-PSProvider -PSProvider FileSystem).Home` to represent the home folder.
+The meaning of `~` depends on the current provider at the time of execution. This isn't just a style issue—it's crucial for code you intend to share. Instead, use `${ Env:UserProfile }` or `(Get-PSProvider -PSProvider FileSystem).Home` to represent the home folder.
