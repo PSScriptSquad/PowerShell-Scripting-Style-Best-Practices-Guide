@@ -234,14 +234,11 @@ $runningServices | ForEach-Object { Write-Output "Service: $($_.Name), Status: $
 #### Explanation:
 
 1. **Whitespace around commas and semicolons**:
-   * `param ( [string]$Status )` has spaces after the comma.
    * `Write-Output "Service: $($_.Name), Status: $($_.Status)"` has spaces after the comma.
 2. **Spaces inside curly braces**:
    * In script blocks, such as `Where-Object { $_.Status -eq $Status }` and `ForEach-Object { Write-Output "Service: $($_.Name), Status: $($_.Status)" }`, there's a single space inside the curly braces.
 3. **Subexpressions**:
-   * Subexpression `$( ... )` in `Write-Output "Service: $($_.Name), Status: $($_.Status)"` has a single space inside the parentheses.
-4. **Avoid unnecessary spaces inside parentheses or square braces**:
-   * The parentheses and square braces are used without unnecessary spaces, for example, `param ( [string]$Status )` and `Where-Object { $_.Status -eq $Status }`.
+   * Subexpression `$(...)` in `Write-Output "Service: $($_.Name), Status: $($_.Status)"` has no space inside the parentheses.
 
 ## Avoid Using Semicolons (;) as Line Terminators
 
