@@ -13,7 +13,7 @@ Remember, `Invoke-Command` can run against all specified computers concurrently,
 **Do not:**
 
 ```powershell
-foreach ( $Computer in $Computers ) { 
+foreach ($Computer in $Computers) { 
     Invoke-Command -ComputerName $Computer -ScriptBlock {Get-PSDrive -PSProvider FileSystem}
 }
 ```
