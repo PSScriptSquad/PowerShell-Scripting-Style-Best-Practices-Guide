@@ -24,32 +24,65 @@ PowerShell uses PascalCase for all public identifiers, including module names, f
 PowerShell language constructs, such as \`foreach\` , \`if\`, \`switch\`, are written in lowercase, as are operators like \`-eq\` and \`-match\`. In comment-based help documentation, keywords are written in UPPERCASE for visibility. &#x20;
 
 ```powershell
-function Write-Host {
+function Get-UserInfo {
     <#
-    .SYNOPSIS
-        Writes customized output to a host.
-    .DESCRIPTION
-        The Write-Host cmdlet customizes output. You can specify the color of text by using
-        the ForegroundColor parameter, and you can specify the background color by using the
-        BackgroundColor parameter. The Separator parameter lets you specify a string to use to
-        separate displayed objects. The particular result depends on the program that is
-        hosting Windows PowerShell.
+        .SYNOPSIS
+            Gets information about a user.
+        
+        .DESCRIPTION
+            The Get-UserInfo function retrieves the full name, email address,
+            and department of a specified user.
+        
+        .PARAMETER UserName
+            The name of the user whose information is to be retrieved.
+        
+        .EXAMPLE
+            $info = Get-UserInfo -UserName "JohnDoe"
+            Write-Output $info
+        
+        .NOTES
+            This is a sample function demonstrating PowerShell conventions.
     #>
     [CmdletBinding()]
-    param(
-        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromRemainingArguments = $true)]
-        [psobject]$Object,
- 
-        [switch]$NoNewline,
- 
-        [psobject]$Separator,
- 
-        [System.ConsoleColor]$ForegroundColor,
- 
-        [System.ConsoleColor]$BackgroundColor
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$UserName
     )
-    begin {
-…
+    
+    # Initialize variables
+    $UserInfo = @{
+        FullName = $null
+        Email = $null
+        Department = $null
+    }
+    
+    # Use lowercase language constructs and operators
+    if ($null -eq $UserName) {
+        Write-Error "UserName parameter cannot be null."
+        return
+    }
+
+    # Simulate fetching user information (replace this with actual logic)
+    switch ($UserName) {
+        "JohnDoe" {
+            $UserInfo.FullName = "John Doe"
+            $UserInfo.Email = "john.doe@example.com"
+            $UserInfo.Department = "IT"
+        }
+        "JaneSmith" {
+            $UserInfo.FullName = "Jane Smith"
+            $UserInfo.Email = "jane.smith@example.com"
+            $UserInfo.Department = "HR"
+        }
+        default {
+            Write-Error "User not found."
+            return
+        }
+    }
+    
+    # Output the user information
+    Write-Output $UserInfo
+}
 ```
 
 ### **Special Cases**
@@ -63,11 +96,6 @@ This guide recommends the "One True Brace Style" (OTBS), which places opening br
 Example:
 
 ```powershell
-enum Color {
-    Black,
-    White
-}
- 
 function Test-Code {
     [CmdletBinding()]
     param (
@@ -132,7 +160,9 @@ Get-WmiObject @GetWmiObjectParams
 
 Instead of using backticks, consider employing the splatting technique. Splatting allows you to achieve the same clean, formatted code without relying on backticks. Note that in the splatting example, with only three short parameters, it would be best to place the entire command on one line, such as:
 
-\` Get-WmiObject -Class "Win32\_LogicalDisk" -Filter "DriveType=3" -ComputerName "SERVER2"\`
+```powershell
+Get-WmiObject -Class "Win32_LogicalDisk" -Filter "DriveType=3" -ComputerName "SERVER2"
+```
 
 This one-liner is within the maximum line length recommendation. The splatting example serves to illustrate how to use splatting when it is needed.&#x20;
 
@@ -167,14 +197,8 @@ $variable = Get-Content -Path $FilePath -Wait:($ReadCount -gt 0) -TotalCount ($R
 # Do not write:
 $yesterdaysDate = (Get-Date).AddDays( - 1)
  
-$i = 0
-$i ++
- 
 # Instead write:
 $yesterdaysDate = (Get-Date).AddDays(-1)
- 
-$i = 0
-$i++
  
 # Same principle should be applied when using a variable.
 $yesterdaysDate = (Get-Date).AddDays(-$i)
@@ -186,7 +210,7 @@ $yesterdaysDate = (Get-Date).AddDays(-$i)
 
 ```powershell
 $Var = 1
-"This is a string with one (${Var}) delimited variable."
+"This is a string with one ( ${Var} ) delimited variable."
 "There are $( (Get-ChildItem).Count ) files."
 ```
 
