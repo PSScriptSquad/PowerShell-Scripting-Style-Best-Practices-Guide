@@ -23,7 +23,7 @@ Writing a script in the order of execution (param, begin, process, end) clarifie
 
 ## Do Not Use the Keyword \`return\` to Return an Object
 
-In PowerShell, `return` is a flow-control statement that unconditionally exits the enclosing function, script block, or script. To ensure your functions participate in the pipeline properly and their output is handled consistently, use `Write-Output` to emit objects to the pipeline. While PowerShell implicitly returns data from functions, explicitly using `Write-Output` enhances readability and maintainability by making the function's behavior clear. Reserve \`return\` for exiting a scope, and use `Write-Output` for outputting data.
+In PowerShell, `return` is a flow-control statement that unconditionally exits the enclosing function, script block, or script. To ensure your functions participate in the pipeline properly and their output is handled consistently, use `Write-Output` to emit objects to the pipeline. While PowerShell implicitly returns data from functions, explicitly using `Write-Output` enhances readability and maintainability by making the function's behavior clear. Reserve `return` for exiting a scope, and use `Write-Output` for outputting data.
 
 ## Emit objects inside the \`Process {}\` block
 
@@ -98,7 +98,7 @@ If the function returns different object types based on the parameter set, provi
 
 ## Only Output one "kind" of thing at a time
 
-Avoid mixing different types of objects in the output of a single command. This practice may lead to empty rows in your output or cause table output to break into list output, etc. Indicate the output type(s) of your scripts, functions, or cmdlets with the \`\[OutputType()]\` attribute.
+Avoid mixing different types of objects in the output of a single command. This practice may lead to empty rows in your output or cause table output to break into list output, etc. Indicate the output type(s) of your scripts, functions, or cmdlets with the `[OutputType()]` attribute.
 
 When combining the output of multiple types of objects, they should generally be derived from a common base type (e.g., FileInfo and DirectoryInfo both derive from System.IO.FileSystemInfo) or should have format or type files that cause them to output the same columns. Avoid outputting strings interspersed in your output.
 
@@ -108,4 +108,4 @@ When combining the output of multiple types of objects, they should generally be
 
 `$user, $group, $org = Get-UserGroupOrg`
 
-2. **Out-Default:** If you must return multiple object types from an external command, name your function in such a way that it's obvious to users that you're returning multiple things. You must call Out-Default separately for each type of object to ensure that the outputs don't get mixed up by the formatter.
+2. **Out-Default:** If you must return multiple object types from an external command, name your function in such a way that it's obvious to users that you're returning multiple things. You must call `Out-Default` separately for each type of object to ensure that the outputs don't get mixed up by the formatter.
