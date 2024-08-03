@@ -2,7 +2,7 @@
 
 ## Always Start with CmdletBinding <a href="#always-start-with-cmdletbinding" id="always-start-with-cmdletbinding"></a>
 
-Using CmdletBinding is particularly important, especially when utilizing Write-Verbose and Write-Debug. These output streams are off by default, and the `[CmdletBinding()]` attribute enables the common `-Verbose` and `-Debug` switches, turning those streams on. It also activates switches for the Warning and Error streams, and provides methods to collect these streams into variables.
+Using CmdletBinding is particularly important, especially when utilizing `Write-Verbose` and `Write-Debug`. These output streams are off by default, and the `[CmdletBinding()]` attribute enables the common `-Verbose` and `-Debug` switches, turning those streams on. It also activates switches for the Warning and Error streams, and provides methods to collect these streams into variables.
 
 Start your scripts or functions with:
 
