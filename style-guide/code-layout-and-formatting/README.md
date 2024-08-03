@@ -21,7 +21,7 @@ While PowerShell is not case-sensitive, following capitalization conventions ens
 
 PowerShell uses PascalCase for all public identifiers, including module names, function or cmdlet names, classes, enums, attribute names, public fields, properties, global variables, and constants. Since PowerShell command parameters are properties of .NET classes, even parameters use PascalCase rather than camelCase.&#x20;
 
-PowerShell language constructs, such as \`foreach\` , \`if\`, \`switch\`, are written in lowercase, as are operators like \`-eq\` and \`-match\`. In comment-based help documentation, keywords are written in UPPERCASE for visibility. &#x20;
+PowerShell language constructs, such as `foreach`, `if`, `switch`, are written in lowercase, as are operators like `-eq` and `-match`. In comment-based help documentation, keywords are written in UPPERCASE for visibility. &#x20;
 
 ```powershell
 function Get-UserInfo {
@@ -87,7 +87,7 @@ function Get-UserInfo {
 
 ### **Special Cases**
 
-Two-letter acronyms are fully capitalized, such as in the variable \`$PSBoundParameters\` or the cmdlet \`Get-PSDrive\`. However, this does not apply to commonly capitalized words like "OK" and "ID." Compound acronyms, such as when Azure's Resource Manager (RM) meets a Virtual Machine (VM) in \`Start-AzureRmVM\`, should also not extend this rule.
+Two-letter acronyms are fully capitalized, such as in the variable `$PSBoundParameters` or the cmdlet `Get-PSDrive`. However, this does not apply to commonly capitalized words like "OK" and "ID." Compound acronyms, such as when Azure's Resource Manager (RM) meets a Virtual Machine (VM) in `Start-AzureRmVM`, should also not extend this rule.
 
 ## One True Brace Style
 
